@@ -41,7 +41,7 @@ api.get('/standings', async (req, res) => {
         const data = await axios.get(`${apiFOOTBALL}/competitions/WC/standings`, {
             headers: { "X-Auth-Token": `${apiKey}` }
         })
-        res.status(200).json(data.data)
+        res.status(200).json(data.data.standings)
     } catch (error) {
         console.log(error)
     }
@@ -54,6 +54,18 @@ api.get('/cards', async (req, res) => {
             headers: { "X-Auth-Token": `${apiKey}` }
         })
         res.status(200).json(data.data)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+api.get('/teams', async (req, res) => {
+
+    try {
+        const data = await axios.get(`${apiFOOTBALL}/competitions/WC/teams`, {
+            headers: { "X-Auth-Token": `${apiKey}` }
+        }) 
+        res.status(200).json(data.data.teams)
     } catch (error) {
         console.log(error)
     }
